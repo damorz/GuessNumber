@@ -44,7 +44,7 @@ class Guess extends Component {
         <>
         <div className="box">
             <h1>Guess.It</h1>
-            <h2>Guess the number between 0 - 5.</h2>
+            <h2>Guess the number between 0 - 9.</h2>
             <form className="control">
                 <input
                     id="guessNumber"

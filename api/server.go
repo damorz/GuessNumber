@@ -16,7 +16,7 @@ func main() {
 	server := gin.Default()
 
 	server.Use(cors.Default())
-	var randomNumber = rand.Intn(6)
+	var randomNumber = rand.Intn(10)
 
 	server.POST("/isauth", VerifyToken)
 
@@ -58,9 +58,6 @@ var user = User{
 
 func CreateToken(userid uint64) (string, error) {
 	var err error
-
-	//Creating Token
-	// os.Setenv("ACCESS_SECRET", "jdnfksdmfksd") //this should be in an env file
 	atClaims := jwt.MapClaims{}
 	atClaims["authorized"] = true
 	atClaims["user_id"] = userid
@@ -107,14 +104,3 @@ func VerifyToken(ctx *gin.Context) {
 	}
 	ctx.JSON(http.StatusOK, token.Valid)
 }
-
-// func TokenValid(r *http.Request) error {
-// 	token, err := VerifyToken(r)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	if _, ok := token.Claims.(jwt.Claims); !ok && !token.Valid {
-// 		return err
-// 	}
-// 	return nil
-// }
